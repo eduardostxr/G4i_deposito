@@ -1,0 +1,47 @@
+Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            elevation: 6,
+                            child: TypeAheadField(
+                              suggestionsBoxDecoration: SuggestionsBoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.white
+                              ),
+                              textFieldConfiguration: TextFieldConfiguration(
+                                focusNode: emailFocus,
+                              controller: emailController,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: primaryFont,
+                                  color: textDarkColor),
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.symmetric(vertical: 5),
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                enabledBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                disabledBorder: InputBorder.none,
+                                prefixIcon: Icon(
+                                  Icons.mail,
+                                  color: markPrimaryColor,
+                                ),
+                                labelText: 'Email',
+                                labelStyle: TextStyle(
+                                    fontSize: 18, color: markPrimaryColor),
+                                alignLabelWithHint: false,
+                              ),
+                              ),
+                              noItemsFoundBuilder: (context) => Container(height: 0, width: 0),
+                              loadingBuilder: (context) => Container(height: 0, width: 0),
+                              suggestionsCallback: (pattern) async { 
+                                if (pattern == "") return users;     
+                                return users.where((element) => element.contains(pattern));
+                              },
+                              itemBuilder: (context, String suggestion) => ListTile(
+                                title: Text(suggestion)
+                              ),
+                              onSuggestionSelected: (String suggestion) {
+                                emailController.text = suggestion;
+                              },
+                            ),
