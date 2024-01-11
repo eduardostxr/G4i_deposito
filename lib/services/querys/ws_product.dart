@@ -15,7 +15,6 @@ class WsProdutos {
           response.isEmpty) return [];
       response["produtos"].forEach((element) {
         produtos.add(Produto.fromJson(element));
-        //adicionar um novo produto fromJson em uma lista de produtos
       });
       return produtos;
     } catch (e) {

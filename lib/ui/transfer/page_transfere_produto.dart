@@ -64,21 +64,16 @@ class _PageTranfereProdutoState extends State<PageTranfereProduto> {
         controllerQuantidade.text.isNotEmpty;
   }
 
-  // Future<void> _produtosBuilder(BuildContext context, List<Produto> produtos) {
-
   Future<void> _produtosBuilder(BuildContext context) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        // return DialogProdutos(produtos: this.produtos);
         return DialogProdutos();
       },
     ).then((value) {
       objetoProduto = value as Produto;
       textCodigo = objetoProduto.codProduto;
       textProduto = objetoProduto.nome;
-      // controllerProduto.text = "${value.codProduto} - ${value.nome}";
-      // controllerQuantidade.text = "";
       focusQuantidade.requestFocus();
       setState(() => {});
     });
@@ -191,6 +186,7 @@ class _PageTranfereProdutoState extends State<PageTranfereProduto> {
                         nextFocusNode: focusObservacao,
                         labelText: "Quantidade",
                         prefixIcon: Icons.add_box_outlined,
+                        unidade: objetoProduto.unidade,
                         onChanged: (value) {
                           setState(() {});
                         },

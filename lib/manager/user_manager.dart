@@ -103,5 +103,6 @@ Future<List<Produto>> loadProducts() async {
   produtos.sort((a, b) => a.nome.compareTo(b.nome));
   return produtos;
 }
+
 }
 

@@ -12,6 +12,7 @@ class Produto {
     required this.unidade,
     required this.grupo,
   });
+  
   static Produto fromJson(MapSD jsonProduto) {
     return Produto(
         codProduto: jsonProduto["codigo_produto"],
